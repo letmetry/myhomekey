@@ -1,0 +1,35 @@
+{
+  "name": "myhomekey",
+  "version": "1.0.0",
+  "description": "Home autometion",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letmetry/myhomekey.git"
+  },
+  "keywords": [
+    "Home",
+    "automation",
+    "esp8266",
+    "node",
+    "js",
+    "websocket",
+    "express",
+    "body.parser",
+    "arduino"
+  ],
+  "author": "Mohammad islam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/letmetry/myhomekey/issues"
+  },
+  "homepage": "https://github.com/letmetry/myhomekey#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "ws": "^7.0.1"
+  }
+}
