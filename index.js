@@ -90,6 +90,10 @@ app.post('/papp', (req, res)=> {//portable device app request
   return res.json(responseObj);    
 });
 
+app.get('/', function (req, res) {
+    res.send(`<b>My</b> first express http server`);
+});
+
 
 var port = process.env.PORT || 8000;
 const server = app.listen(port, () =>{
