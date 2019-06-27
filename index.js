@@ -2,10 +2,11 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const wsServer = require('ws');
+const wsServer = require('ws').Server;
 var speech, response, sourceURL, responseObj; 
 var arrayOfdevices = [], jsonOfdevices ={"mem_ID":"","state": "on","location": "master_bedroom","device": "light","media": "DF","query": "","Time":""};
 const app = express();
+
 
 function json2json(serverjson){
     for(var jsonkey in serverjson){
@@ -53,7 +54,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.post('/df', function(req, res) {
+app.post('/df', (req, res)=> {
   //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   console.log(JSON.stringify(req.body.queryResult.parameters));
@@ -67,7 +68,7 @@ app.post('/df', function(req, res) {
   return res.json(responseObj);
 });
 
-app.post('/client', function(req, res) {// MCU request
+app.post('/client', (req, res)=> {// MCU request
     let clientJson = req;
     console.log(JSON.stringify(clientJson));
   responseObj = {
@@ -78,7 +79,7 @@ app.post('/client', function(req, res) {// MCU request
   return res.json(responseObj);    
 });
 
-app.post('/papp', function(req, res) {//portable device app request
+app.post('/papp', (req, res)=> {//portable device app request
     let pappJson = req;
     console.log(JSON.stringify(pappJson));
   responseObj = {
@@ -89,12 +90,14 @@ app.post('/papp', function(req, res) {//portable device app request
   return res.json(responseObj);    
 });
 
-var port = process.env.PORT || 8000
-var server = app.listen(port, function() {
-  console.log("Heroku server up and listening on port: " + port);
+
+var port = process.env.PORT || 8000;
+const server = app.listen(port, () =>{
+  console.log(`Heroku server up and listening on port ${port}`);
 });
 
-const io = new wsServer.Server({server: server});
-io.on('connection',function(){
+const io = new wsServer({server});
+io.on('connection',(ws)=>{
    console.log('socket is connected');
+   ws.on('close',()=>{console.log('socket is disconnected');});
 });
