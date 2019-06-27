@@ -1,0 +1,6 @@
+{
+  "name": "myhomekey",
+  "description": "Home automation",
+  "repository": "https://github.com/letmetry/myhomekey",
+  "keywords": ["api.ai", "dialogflow", "natural language","esp8266"]
+}
