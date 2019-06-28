@@ -347,8 +347,12 @@ io.on('open',(ws)=>{
    ws.send("HWS Heroku sending data");
 });
 
-io.on('message',(data)=>{
-   console.log(data);
+io.on('message',(message)=>{
+   console.log("WS Receive: "+ message);
+});
+
+io.on('data',(data)=>{
+   console.log("WS Receive: "+ data);
 });
 
 setInterval(() => {
