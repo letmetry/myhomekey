@@ -344,15 +344,13 @@ io.on('connection',(ws)=>{
 });
 
 io.on('open',(ws)=>{
-   ws.send(new Date().toTimeString());
+   setInterval(() => {
+  		io.clients.forEach((client) => {client.send(`{"heartbeat":"keep alive"}`);});
+		}, 3000);
 });
 
 io.on('message',(data)=>{
    console.log(data);
 });
-/*setInterval(() => {
-  io.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
-  });
-}, 1000);
-*/
+
+
