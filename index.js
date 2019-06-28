@@ -70,7 +70,7 @@ app.post('/df', (req, res)=> {
 
 app.post('/client', (req, res)=> {// MCU request
     let clientJson = req;
-    console.log(JSON.stringify(clientJson));
+    console.log("HTTP POST: " + JSON.stringify(clientJson));
   responseObj = {
                       "fulfillmentText": response
                       ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
@@ -339,12 +339,12 @@ const server = app.listen(port, () =>{
 
 const io = new wsServer({server});
 io.on('connection',(ws)=>{
-   console.log('WS socket is connected');
-   ws.on('close',()=>{console.log('WS socket is disconnected');});
+   console.log('HWS socket is connected');
+   ws.on('close',()=>{console.log('HWS socket is disconnected');});
 });
 
 io.on('open',(ws)=>{
-   ws.send("Heroku sending data");
+   ws.send("HWS Heroku sending data");
 });
 
 io.on('message',(data)=>{
@@ -352,5 +352,5 @@ io.on('message',(data)=>{
 });
 
 setInterval(() => {
-  		io.clients.forEach((client) => {client.send(`{"heartbeat":"keep alive"}`);});
+  		io.clients.forEach((client) => {client.send(`{"heartbeat":"keepalive"}`);});
 		}, 3000);
