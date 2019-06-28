@@ -343,11 +343,11 @@ io.on('connection',(ws)=>{
    ws.on('close',()=>{console.log('socket is disconnected');});
 });
 
-io.on('open',(ws)=>{
+io.on('open',open(ws)=>{
    ws.send(new Date().toTimeString());
 });
 
-io.on('message',(data)=>{
+io.on('message',incoming(data)=>{
    console.log(data);
 });
 /*setInterval(() => {
