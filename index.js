@@ -343,9 +343,16 @@ io.on('connection',(ws)=>{
    ws.on('close',()=>{console.log('socket is disconnected');});
 });
 
+io.on('open',(ws)=>{
+   ws.send(new Date().toTimeString());
+});
 
-setInterval(() => {
+io.on('message',(data)=>{
+   console.log(data);
+});
+/*setInterval(() => {
   io.clients.forEach((client) => {
     client.send(new Date().toTimeString());
   });
 }, 1000);
+*/
