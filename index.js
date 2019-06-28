@@ -342,3 +342,10 @@ io.on('connection',(ws)=>{
    console.log('socket is connected');
    ws.on('close',()=>{console.log('socket is disconnected');});
 });
+
+
+setInterval(() => {
+  io.clients.forEach((client) => {
+    client.send(new Date().toTimeString());
+  });
+}, 1000);
