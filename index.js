@@ -339,15 +339,15 @@ const server = app.listen(port, () =>{
 
 const io = new wsServer({server});
 io.on('connection',(ws)=>{
-   console.log('socket is connected');
-   ws.on('close',()=>{console.log('socket is disconnected');});
+   console.log('WS socket is connected');
+   ws.on('close',()=>{console.log('WS socket is disconnected');});
 });
 
-io.on('open',function open(ws){
+io.on('open',(ws)=>{
    ws.send(new Date().toTimeString());
 });
 
-io.on('message',function incoming(data){
+io.on('message',(data)=>{
    console.log(data);
 });
 /*setInterval(() => {
