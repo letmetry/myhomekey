@@ -344,13 +344,13 @@ io.on('connection',(ws)=>{
 });
 
 io.on('open',(ws)=>{
-   setInterval(() => {
-  		io.clients.forEach((client) => {client.send(`{"heartbeat":"keep alive"}`);});
-		}, 3000);
+   ws.send("Heroku sending data");
 });
 
 io.on('message',(data)=>{
    console.log(data);
 });
 
-
+setInterval(() => {
+  		io.clients.forEach((client) => {client.send(`{"heartbeat":"keep alive"}`);});
+		}, 3000);
