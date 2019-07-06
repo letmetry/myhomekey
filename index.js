@@ -344,11 +344,10 @@ io.on('connection',(ws)=>{
  	ws.on('message',(message)=>{
    		console.log(message.trim());
 		try {
-    			JSON.parse(message.trim());
+    			JSON.parse(JSON.stringify(message.trim()));
 		} catch (e) {
     			console.log("not JSON");
 		}
-		console.log(JSON.stringify(message.trim()));
 	});
 });
 
