@@ -343,7 +343,7 @@ io.on('connection',(ws)=>{
    	ws.on('close',()=>{console.log('HWS socket is disconnected');});
  	ws.on('message',(message)=>{
    		console.log(message.trim());
-		console.log(JSON.parse(JSON.stringify(message.trim())));
+		console.log(JSON.parse(JSON.stringify(message.trim()))['deviceid']);
 	});
 });
 
