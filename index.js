@@ -342,7 +342,8 @@ io.on('connection',(ws)=>{
    	console.log('HWS socket is connected');
    	ws.on('close',()=>{console.log('HWS socket is disconnected');});
  	ws.on('message',(message)=>{
-   		console.log("WS Received in connection: "+ JSON.stringify(JSON.parse(message)));});
+   		console.log("WS Received in connection: "+ JSON.stringify(JSON.parse(message.trim())));
+	});
 });
 
 io.on('open',(ws)=>{
