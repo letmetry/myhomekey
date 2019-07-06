@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const wsServer = require('ws').Server;
 var speech, response, sourceURL, responseObj; 
-var arrayOfdevices = [], jsonOfdevices ={"mem_ID":"","state": "on","location": "master_bedroom","device": "light","media": "DF","query": "","Time":""};
+var arrayOfdevices = [], jsonOfdevices = {"deviceid":"xxxxxxx","location":"aaaaaaaaaaa","locserial":"qqqqqqqqqqqqq","strlocalIP":"xxx.yyy.zzz.111","State":"off"};
 const app = express();
 
 
@@ -348,8 +348,8 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
-		console.log("Element of device Json: ");
-		console.log(jsonOfdevices.deviceid);
+		console.log("Element of device Json: ", jsonOfdevices.deviceid);
+		console.log("Json object: ",jsonOfdevices);
 	});
 });
 
