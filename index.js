@@ -348,10 +348,7 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
-		for(var key in jsonOfdevices){
-			console.log("Json object value: ", jsonOfdevices[key]);
-		}
-		console.log("Json object: ",jsonOfdevices);
+		console.log("Stringify Json object: ",JSON.stringify(jsonOfdevices));
 	});
 });
 
