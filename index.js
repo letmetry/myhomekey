@@ -348,7 +348,9 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
-		console.log("Element of device Json: ", jsonOfdevices.deviceid);
+		for(var key in jsonOfdevices){
+			console.log("Json object value: ", jsonOfdevices[key]);
+		}
 		console.log("Json object: ",jsonOfdevices);
 	});
 });
