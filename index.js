@@ -348,6 +348,8 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
+		console.log("Device Json: ");
+		console.log(jsonOfdevices);
 	});
 });
 
