@@ -362,7 +362,7 @@ io.on('connection',(ws)=>{
 				console.log('Array of Devices: ',arrayOfdevices);
 			}else{
 				//Check for an element in the array
-				var arraySearchResult = searchArrayIndex(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
+				var arraySearchResult = searchArrayIndex(arrayOfdevices,jsonOfdevices['DEVICEID'],0,jsonOfdevices['LOCSERIAL'],2);
 				console.log('Array Search Result',arraySearchResult);
 				if(arraySearchResult == -1){
 					arrayOfdevices.push(json2array(jsonOfdevices));
@@ -391,6 +391,7 @@ io.on('data',(data)=>{
    console.log("WS Receive: "+ data);
 });
 
-setInterval(() => {
+/*setInterval(() => {
   		io.clients.forEach((client) => {client.send(`{"heartbeat":"keepalive"}`);});
 		}, 3000);
+*/
