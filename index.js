@@ -342,13 +342,16 @@ io.on('connection',(ws)=>{
    	console.log('HWS socket is connected');
    	ws.on('close',()=>{console.log('HWS socket is disconnected');});
  	ws.on('message',(message)=>{
-   		console.log(message.trim());
+   		console.log('received:', message.trim());
 		try {
     			jsonOfdevices = JSON.parse(JSON.stringify(message.trim()));
 		} catch (e) {
     			console.log("not JSON");
 		}
 		console.log("Stringify Json object: ",JSON.stringify(jsonOfdevices));
+		for(var keyofjson in jsonOfdevices){
+			console.log('Show keys: ', keyofjson);
+		}
 	});
 });
 
