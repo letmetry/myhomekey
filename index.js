@@ -23,13 +23,13 @@ function json2array(jsonData){
     return arrayObj;
 };
 
-function searchIn(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
+function searchInArray(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
     found = Searchwithin.find((elements)=>{ if((elements[searchLocationArrayID]==searchLocation)&&(elements[searchDeviceArrayID]==searchDevice))return elements[0]});
     if(found) return found;
     else return -1;
 };
 
-function searchIndex(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
+function searchArrayIndex(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
     for(var i=0;i<Searchwithin.length;i++){
         if((Searchwithin[i][searchLocationArrayID]==searchLocation)&&(Searchwithin[i][searchDeviceArrayID]==searchDevice)){
             return i;
@@ -348,9 +348,13 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
-		console.log("Stringify Json object: ",JSON.stringify(jsonOfdevices));
-		for(var keyofjson in jsonOfdevices){
-			console.log(`${keyofjson} : ${jsonOfdevices[keyofjson]}`);
+		if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
+			var arraySearchResult = searchInArray(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
+			console.log('Array Search Result',arraySearchResult);
+			if(arraySearchResult != -1){
+				arrayOfdevices.push(json2array(jsonOfdevices));
+				console.log('Array of Devices: ',arrayOfdevices);
+			}
 		}
 	});
 });
