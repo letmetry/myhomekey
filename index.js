@@ -348,7 +348,7 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
-		if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
+		/*if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
 			arrayOfdevices.push(json2array(jsonOfdevices));
 			console.log('Array of Devices: ',arrayOfdevices);
 		}else{
@@ -358,7 +358,9 @@ io.on('connection',(ws)=>{
 				arrayOfdevices.push(json2array(jsonOfdevices));
 				console.log('Array of Devices: ',arrayOfdevices);
 			}
-		}
+		}*/
+		console.log('Device ID ',jsonOfdevices['deviceid']);
+		console.log('Local serial ',jsonOfdevices['locserial']);
 	});
 });
 
