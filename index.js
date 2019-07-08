@@ -350,7 +350,7 @@ io.on('connection',(ws)=>{
 		}
 		console.log("Stringify Json object: ",JSON.stringify(jsonOfdevices));
 		for(var keyofjson in jsonOfdevices){
-			console.log('Show keys: ', keyofjson);
+			console.log('Show keys value: ', jsonOfdevices[keyofjson]);
 		}
 	});
 });
