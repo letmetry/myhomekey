@@ -357,7 +357,7 @@ io.on('connection',(ws)=>{
 			if(arraySearchResult == -1){
 				arrayOfdevices.push(json2array(jsonOfdevices));*/
 				console.log('Array of Devices: ',arrayOfdevices);
-			}
+			//}
 		}
 
 	});
