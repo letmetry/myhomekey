@@ -7,6 +7,48 @@ var speech, response, sourceURL, responseObj;
 var arrayOfdevices = [], jsonOfdevices = {};
 const app = express();
 
+/********************************** User defined funtions **********************************/
+function json2json(serverjson){
+    for(var jsonkey in serverjson){
+      if(jsonOfdevices[jsonkey]){
+        jsonOfdevices[jsonkey] = serverjson[jsonkey]
+      };
+    };
+    jsonOfdevices["c"]= Math.floor(Date.now()/1000)
+};
+
+function json2array(jsonData){
+    var arrayObj = [];
+    for(var jsonObj in jsonData) arrayObj.push(jsonData[jsonObj]);
+    return arrayObj;
+};
+
+function searchInArray(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
+    found = Searchwithin.find((elements)=>{ if((elements[searchLocationArrayID]==searchLocation)&&(elements[searchDeviceArrayID]==searchDevice))return elements[0]});
+    if(found) return found;
+    else return -1;
+};
+
+function searchArrayIndex(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
+    for(var i=0;i<Searchwithin.length;i++){
+        if((Searchwithin[i][searchLocationArrayID]==searchLocation)&&(Searchwithin[i][searchDeviceArrayID]==searchDevice)){
+            return i;
+        };
+    };
+};
+
+function array2json(arrayObj,jsonObj){
+    var count = 0;
+    for(var jsonkey in jsonObj){
+       jsonObj[jsonkey] = arrayObj[count];
+        ++count;
+    };
+    return jsonObj;
+};
+/********************************** User defined funtions **********************************/
+
+
+
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -304,22 +346,25 @@ io.on('connection',(ws)=>{
    	ws.on('close',()=>{console.log('HWS socket is disconnected');});
  	ws.on('message',(message)=>{
    		console.log('received:', message.trim());
+		
 		try {
     			jsonOfdevices = JSON.parse(message.trim());
 		} catch (e) {
     			console.log("not JSON");
 		}
 		console.log('Converted JSON:', jsonOfdevices);
-		if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
-			arrayOfdevices.push(json2array(jsonOfdevices));
-			console.log('Array of Devices: ',arrayOfdevices);
-		}else{
-			/*var arraySearchResult = searchInArray(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
-			console.log('Array Search Result',arraySearchResult);
-			if(arraySearchResult == -1){
-				arrayOfdevices.push(json2array(jsonOfdevices));*/
+		if(Object.keys(jsonOfdevices).length!=0){//Check if JSON is not empty		
+			if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
+				arrayOfdevices.push(json2array(jsonOfdevices));
 				console.log('Array of Devices: ',arrayOfdevices);
-			//}
+			}else{
+				var arraySearchResult = searchInArray(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
+				console.log('Array Search Result',arraySearchResult);
+				if(arraySearchResult == -1){
+					arrayOfdevices.push(json2array(jsonOfdevices));
+					console.log('Array of Devices: ',arrayOfdevices);
+				}
+			}
 		}
 
 	});
@@ -340,43 +385,3 @@ io.on('data',(data)=>{
 setInterval(() => {
   		io.clients.forEach((client) => {client.send(`{"heartbeat":"keepalive"}`);});
 		}, 3000);
-
-
-
-function json2json(serverjson){
-    for(var jsonkey in serverjson){
-      if(jsonOfdevices[jsonkey]){
-        jsonOfdevices[jsonkey] = serverjson[jsonkey]
-      };
-    };
-    jsonOfdevices["c"]= Math.floor(Date.now()/1000)
-};
-
-function json2array(jsonData){
-    var arrayObj = [];
-    for(var jsonObj in jsonData) arrayObj.push(jsonData[jsonObj]);
-    return arrayObj;
-};
-
-function searchInArray(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
-    found = Searchwithin.find((elements)=>{ if((elements[searchLocationArrayID]==searchLocation)&&(elements[searchDeviceArrayID]==searchDevice))return elements[0]});
-    if(found) return found;
-    else return -1;
-};
-
-function searchArrayIndex(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
-    for(var i=0;i<Searchwithin.length;i++){
-        if((Searchwithin[i][searchLocationArrayID]==searchLocation)&&(Searchwithin[i][searchDeviceArrayID]==searchDevice)){
-            return i;
-        };
-    };
-};
-
-function array2json(arrayObj,jsonObj){
-    var count = 0;
-    for(var jsonkey in jsonObj){
-       jsonObj[jsonkey] = arrayObj[count];
-        ++count;
-    };
-    return jsonObj;
-};
