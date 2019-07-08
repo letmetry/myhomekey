@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const wsServer = require('ws').Server;
 var speech, response, sourceURL, responseObj; 
-let arrayOfdevices = []; jsonOfdevices = {};
+var arrayOfdevices = []; jsonOfdevices = {};
 const app = express();
 
 app.use(
