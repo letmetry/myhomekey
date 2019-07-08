@@ -349,6 +349,9 @@ io.on('connection',(ws)=>{
     			console.log("not JSON");
 		}
 		if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
+			arrayOfdevices.push(json2array(jsonOfdevices));
+			console.log('Array of Devices: ',arrayOfdevices);
+		}else{
 			var arraySearchResult = searchInArray(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
 			console.log('Array Search Result',arraySearchResult);
 			if(arraySearchResult != -1){
