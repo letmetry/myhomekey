@@ -368,7 +368,7 @@ io.on('connection',(ws)=>{
 				}else{
 					arrayOfdevices[arraySearchResult][4]='off';
 					console.log('Searched Array of Devices : ',arrayOfdevices[arraySearchResult]);
-					console.log('Array converted to JSON : ',array2json(arrayOfdevices[arraySearchResult])));
+					console.log('Array converted to JSON : ',array2json(arrayOfdevices[arraySearchResult]));
 					ws.send(JSON.stringify(array2json(arrayOfdevices[arraySearchResult])));
 				}
 			}
