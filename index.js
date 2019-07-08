@@ -359,13 +359,16 @@ io.on('connection',(ws)=>{
 				arrayOfdevices.push(json2array(jsonOfdevices));
 				console.log('Array of Devices: ',arrayOfdevices);
 			}else{
+				//Check for an element in the array
 				var arraySearchResult = searchArrayIndex(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
 				console.log('Array Search Result',arraySearchResult);
 				if(arraySearchResult == -1){
 					arrayOfdevices.push(json2array(jsonOfdevices));
 					console.log('Array of Devices after push: ',arrayOfdevices);
 				}else{
+					arrayOfdevices[arraySearchResult][4]='off';
 					console.log('Searched Array of Devices : ',arrayOfdevices[arraySearchResult]);
+					ws.send(JSON.stringify(array2json(arrayOfdevices[arraySearchResult])));
 				}
 			}
 		}
