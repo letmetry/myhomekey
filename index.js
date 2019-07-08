@@ -346,8 +346,10 @@ const server = app.listen(port, () =>{
 const io = new wsServer({server});
 io.on('connection',(ws)=>{
    	console.log('HWS socket is connected');
+	ws.send(`{"connection":"yes"}`);
    	ws.on('close',()=>{console.log('HWS socket is disconnected');});
  	ws.on('message',(message)=>{
+		
    		console.log('received:', message.trim());
 		
 		try {
