@@ -365,7 +365,7 @@ io.on('connection',(ws)=>{
 					arrayOfdevices.push(json2array(jsonOfdevices));
 					console.log('Array of Devices after push: ',arrayOfdevices);
 				}else{
-					console.log('Array of Devices final: ',arrayOfdevices);
+					console.log('Searched Array of Devices : ',arrayOfdevices[arraySearchResult]);
 				}
 			}
 		}
