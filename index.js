@@ -35,6 +35,7 @@ function searchArrayIndex(Searchwithin,searchLocation,searchLocationArrayID, sea
             return i;
         };
     };
+	return -1;
 };
 
 function array2json(arrayObj,jsonObj){
@@ -360,9 +361,11 @@ io.on('connection',(ws)=>{
 			}else{
 				var arraySearchResult = searchArrayIndex(arrayOfdevices,jsonOfdevices['deviceid'],0,jsonOfdevices['locserial'],2);
 				console.log('Array Search Result',arraySearchResult);
-				if(arraySearchResult == undefined){
+				if(arraySearchResult == -1){
 					arrayOfdevices.push(json2array(jsonOfdevices));
-					console.log('Array of Devices: ',arrayOfdevices);
+					console.log('Array of Devices after push: ',arrayOfdevices);
+				}else{
+					console.log('Array of Devices final: ',arrayOfdevices);
 				}
 			}
 		}
