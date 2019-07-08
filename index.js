@@ -393,7 +393,6 @@ io.on('data',(data)=>{
    console.log("WS Receive: "+ data);
 });
 
-/*setInterval(() => {
+setInterval(() => {
   		io.clients.forEach((client) => {client.send(`{"heartbeat":"keepalive"}`);});
-		}, 3000);
-*/
+		}, 5000);
