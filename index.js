@@ -348,6 +348,7 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
+		console.log('Converted JSON:', jsonOfdevices);
 		if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
 			arrayOfdevices.push(json2array(jsonOfdevices));
 			console.log('Array of Devices: ',arrayOfdevices);
