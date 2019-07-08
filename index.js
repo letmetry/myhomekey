@@ -344,7 +344,7 @@ io.on('connection',(ws)=>{
  	ws.on('message',(message)=>{
    		console.log('received:', message.trim());
 		try {
-    			jsonOfdevices = JSON.parse(JSON.stringify(message.trim()));
+    			jsonOfdevices = JSON.parse(message.trim());
 		} catch (e) {
     			console.log("not JSON");
 		}
