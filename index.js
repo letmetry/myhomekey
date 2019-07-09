@@ -93,11 +93,10 @@ app.post('/papp', (req, res)=> {//portable device app request
 		}*/
   console.log(pappJson);
   responseObj = {
-                      "fulfillmentText": response
-                      ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
-                      ,"source": sourceURL
+			"Test":"Test",
+	  		"h":"k"
                     };
-  return res.json(jsonOfdevices);    
+  return res.json(responseObj);    
 });
 
 app.get('/', function (req, res) {
