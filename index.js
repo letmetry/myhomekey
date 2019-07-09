@@ -62,15 +62,14 @@ app.post('/df', (req, res)=> {
   //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   console.log('JSON of DF: ',JSON.stringify(req.body.queryResult.parameters));
+  console.log('Response String: ',speech);
   response = 'response is ' + speech;
   sourceURL = '';
   responseObj = {
                       "fulfillmentText": response
                       ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
                       ,"source": sourceURL
-                    };
-  console.log('Array of Devices: ',arrayOfdevices);
-  console.log('JSON of Devices: ',jsonOfdevices);	
+                    };	
   return res.json(responseObj);
 });
 
