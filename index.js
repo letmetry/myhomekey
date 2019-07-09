@@ -336,10 +336,7 @@ app.post('/papp', (req, res)=> {//portable device app request
 		}
 		*/
   
-  responseObj = {
-			"Test":"Test",
-	  		"h":"k"
-                    };
+  responseObj = {"Test":"Test","beating":"keepalive"};
   return res.json(responseObj);    
 });
 
