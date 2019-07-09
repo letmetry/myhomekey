@@ -60,7 +60,7 @@ app.use(bodyParser.json());
 
 app.post('/df', (req, res)=> {
   //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
-  speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
+  speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.DEV_LOCATION : 'Seems like some problem. Speak again.';
   console.log('JSON of DF: ',JSON.stringify(req.body.queryResult.parameters));
   console.log('Response String: ',speech);
   response = 'response is ' + speech;
