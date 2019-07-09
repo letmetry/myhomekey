@@ -337,7 +337,7 @@ app.post('/papp', (req, res)=> {//portable device app request
 		*/
   
   responseObj = {"Test":"Test","beating":"keepalive"};
-  return res.json(responseObj);    
+  return res.text(responseObj);    
 });
 
 var port = process.env.PORT || 8000;
