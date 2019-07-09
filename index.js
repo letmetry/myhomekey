@@ -84,22 +84,6 @@ app.post('/client', (req, res)=> {// MCU request
   return res.json(responseObj);    
 });
 
-app.post('/papp', (req, res)=> {//portable device app request
-    let pappJson = req.body;
-	/*	try {
-    			let pappJson = JSON.parse(req.body);
-		} catch (e) {
-    			console.log("not JSON");
-		}
-		*/
-  console.log(pappJson);
-  responseObj = {
-			"Test":"Test",
-	  		"h":"k"
-                    };
-  return res.json(responseObj);    
-});
-
 app.get('/', function (req, res) {
     res.send(`
 
@@ -341,6 +325,23 @@ body {
 `);
 });
 
+
+app.post('/papp', (req, res)=> {//portable device app request
+    let pappJson = req;
+	console.log(req);
+	/*	try {
+    			let pappJson = JSON.parse(req.body);
+		} catch (e) {
+    			console.log("not JSON");
+		}
+		*/
+  
+  responseObj = {
+			"Test":"Test",
+	  		"h":"k"
+                    };
+  return res.json(responseObj);    
+});
 
 var port = process.env.PORT || 8000;
 const server = app.listen(port, () =>{
