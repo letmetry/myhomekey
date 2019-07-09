@@ -85,8 +85,13 @@ app.post('/client', (req, res)=> {// MCU request
 });
 
 app.post('/papp', (req, res)=> {//portable device app request
-    let pappJson = req;
-    console.log(pappJson);
+    //let pappJson = req;
+		try {
+    			let pappJson = JSON.parse(req);
+		} catch (e) {
+    			console.log("not JSON");
+		}
+  console.log('PAPP received: ',pappJson);
   responseObj = {
                       "fulfillmentText": response
                       ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
