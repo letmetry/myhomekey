@@ -327,21 +327,20 @@ body {
 
 
 app.post('/papp', (req, res)=> {//portable device app request
-    let pappJson = req.body;
-	console.log(pappJson);
-	/*	try {
+    /*let pappJson = req.body;
+	console.log(pappJson);*/
+		try {
     			let pappJson = JSON.parse(req.body);
 		} catch (e) {
     			console.log("not JSON");
 		}
-		*/
   
   let responseObj = {
 	  		"Test":"Test"
 		 	,"beating":"keepalive"
   			};
   return res.json(responseObj);    
-  	//return res.text(responseObj,(resp)=>{console.log(resp);});
+
 });
 
 var port = process.env.PORT || 8000;
