@@ -76,7 +76,7 @@ app.post('/df', (req, res)=> {
 app.post('/client', (req, res)=> {// MCU request
     let clientJson = req;
     console.log("HTTP POST: " + JSON.stringify(clientJson));
-  responseObj = {
+  let responseObj = {
                       "fulfillmentText": response
                       ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
                       ,"source": sourceURL
@@ -327,8 +327,8 @@ body {
 
 
 app.post('/papp', (req, res)=> {//portable device app request
-    let pappJson = req;
-	console.log(req);
+    let pappJson = req.body;
+	console.log(pappJson);
 	/*	try {
     			let pappJson = JSON.parse(req.body);
 		} catch (e) {
@@ -336,9 +336,12 @@ app.post('/papp', (req, res)=> {//portable device app request
 		}
 		*/
   
-  responseObj = `{"Test":"Test","beating":"keepalive"}`;
-  //return res.text(responseObj);    
-  	return res.text(responseObj,(resp)=>{console.log(resp);});
+  let responseObj = {
+	  		"Test":"Test"
+		 	,"beating":"keepalive"
+  			};
+  return res.json(responseObj);    
+  	//return res.text(responseObj,(resp)=>{console.log(resp);});
 });
 
 var port = process.env.PORT || 8000;
