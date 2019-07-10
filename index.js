@@ -405,4 +405,4 @@ io.on('data',(data)=>{
 
 setInterval(() => {
   		io.clients.forEach((client) => {client.send(`{"heartbeat":"keepalive"}`);});
-		}, 5000);
+		}, 3000);
