@@ -342,7 +342,9 @@ app.post('/papp', (req, res)=> {//portable device app request
 	  		"TestL":"TestR"
 		 	,"beating":"keepalive"
   			};
-  return res.json(responseObj);    
+  //return res.json(responseObj);
+
+return res.send(`["as","ed","bd"]`);  
 
 });
 
