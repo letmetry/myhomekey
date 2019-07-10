@@ -367,7 +367,8 @@ io.on('connection',(ws)=>{
 		} catch (e) {
     			console.log("not JSON");
 		}
-		console.log('Converted JSON:', jsonOfdevices);
+		console.log('Converted JSON:' , jsonOfdevices);
+		console.log('Array of Devices : ' , arrayOfdevices);
 		if(Object.keys(jsonOfdevices).length!=0){//Check if JSON is not empty		
 			if(arrayOfdevices.length ==0 || arrayOfdevices ===undefined){
 				arrayOfdevices.push(json2array(jsonOfdevices));
