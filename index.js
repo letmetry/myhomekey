@@ -336,7 +336,7 @@ app.post('/papp', (req, res)=> {//portable device app request
 		}
 		*/
   
-  responseObj = {"Test":"Test","beating":"keepalive"};
+  responseObj = `{"Test":"Test","beating":"keepalive"}`;
   return res.text(responseObj);    
 });
 
