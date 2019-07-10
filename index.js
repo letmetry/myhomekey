@@ -327,12 +327,15 @@ body {
 
 
 app.post('/papp', (req, res)=> {//portable device app request
-    /*let pappJson = req.body;
+    let pappJson ="";
+	
+	/*= req.body;
 	console.log(pappJson);*/
 		try {
     			let pappJson = JSON.parse(req.body);
 		} catch (e) {
     			console.log("not JSON");
+			pappJson = req.body;
 		}
   console.log(pappJson);
   let responseObj = {
