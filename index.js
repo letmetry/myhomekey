@@ -334,7 +334,7 @@ app.post('/papp', (req, res)=> {//portable device app request
 		} catch (e) {
     			console.log("not JSON");
 		}
-  
+  console.log(pappJson);
   let responseObj = {
 	  		"Test":"Test"
 		 	,"beating":"keepalive"
