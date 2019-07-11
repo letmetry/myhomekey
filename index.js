@@ -75,6 +75,7 @@ app.post('/df', (req, res)=> {
 
 app.post('/client', (req, res)=> {// MCU request
     let clientJson = req;
+	console.log(req);
     console.log("HTTP POST: " + JSON.stringify(clientJson));
   let responseObj = {
                       "fulfillmentText": response
