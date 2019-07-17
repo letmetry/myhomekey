@@ -88,6 +88,22 @@ app.post('/client', (req, res)=> {// MCU request
 app.get('/', function (req, res) {
     res.send(`
 
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+<script>
+$('.btn').click(function(e){    
+    $('.fancy, .btn').fadeOut('slow', function(){
+        $('.bank, .btn-bk').fadeIn('slow');
+    });
+});
+
+$('.btn-bk').click(function(e){    
+    $('.bank, .btn-bk').fadeOut('slow', function(){
+        $('.fancy, .btn').fadeIn('slow');
+    });
+});
+</script>
+
 <style>
 body { 
   background-color: #DDDDDD; 
@@ -317,8 +333,12 @@ body {
     }
     }
 
+	.bank {display:none;}
+	.btn-bk {display:none;}
+
      </style>
 <div id="maintext">MOMIZ CLOUD</div>
+
 <div class="ball-wrapper">
     <div class="ball"></div>
     <div class="ball-shadow"></div>
