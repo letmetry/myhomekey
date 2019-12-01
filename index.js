@@ -369,6 +369,28 @@ return res.send(`["as","ed","bd"]`);
 
 });
 
+app.post('/ifttt', (req, res)=> {//portable device app request
+    let iftttJson ="";
+	
+	/*= req.body;
+	console.log(pappJson);*/
+		try {
+    			let iftttJson = JSON.parse(req.body);
+		} catch (e) {
+    			console.log("not JSON");
+			pappJson = req.body;
+		}
+  console.log(iftttJson);
+  let responseObj = {
+	  		"TestL":"TestR"
+		 	,"beating":"keepalive"
+  			};
+  //return res.json(responseObj);
+
+//return res.send(`["as","ed","bd"]`);  
+
+});
+
 var port = process.env.PORT || 8000;
 const server = app.listen(port, () =>{
   console.log(`Heroku server up and listening on port ${port}`);
