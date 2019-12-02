@@ -370,22 +370,21 @@ return res.send(`["as","ed","bd"]`);
 });
 
 app.post('/ifttt', (req, res)=> {//portable device app request
-    let iftttJson ="";
-	
-	/*= req.body;
-	console.log(pappJson);*/
+    let iftttJson = req.body;
+	console.log("IFTTT: ",iftttJson);
+	/*
 		try {
     			let iftttJson = JSON.parse(req.body);
 		} catch (e) {
     			console.log("not JSON");
 			pappJson = req.body;
 		}
-  console.log(iftttJson);
+  console.log(iftttJson);*/
   let responseObj = {
 	  		"TestL":"TestR"
 		 	,"beating":"keepalive"
   			};
-  //return res.json(responseObj);
+  return res.json(responseObj);
 
 //return res.send(`["as","ed","bd"]`);  
 
