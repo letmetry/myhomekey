@@ -370,8 +370,8 @@ return res.send(`["as","ed","bd"]`);
 });
 
 app.post('/ifttt', (req, res)=> {//portable device app request
-    let iftttJson = req.body;
-	console.log("IFTTT: ",iftttJson);
+    let iftttJson = JSON.parse(req.body);
+	console.log("IFTTT: ",iftttJson[0]);
 	/*
 		try {
     			let iftttJson = JSON.parse(req.body);
